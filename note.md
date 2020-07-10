@@ -172,3 +172,73 @@ arr instanceof Array  arr是Array吗
 1.标记清除(常用)
 
 2.引用技术(不常用)
+
+# 第五章
+
+## 5.1object类型
+
+创建实例
+
+(1) var obj =new  Object()
+
+​     obj.name="joy"
+
+(2) var obj ={     (常用)
+
+name:"joy"
+
+}
+
+## 5.2Array类型
+
+var arr=Array(3)  长度为3   
+
+var arr=Array("jot")  数组只包含 "jot"  ==> var arr=["jot"]
+
+##### 判断数组
+
+Array.isArray(arr) ==>布尔
+
+var color=["red","blue"]
+
+color.valueOf()  ==>返回数组
+
+color.toString()==>返回字符串
+
+color.join(",") ==>转换字符串
+
+##### 操作数组
+
+push尾部添加
+
+pop尾部删除
+
+shift头部删除
+
+unshift头部添加
+
+reverse数组倒序
+
+sort数组按首字母ascII码升序排列
+
+arr.sort((a,b)=>a-b) 数组升序排列
+
+slice(a,b) a是数组起始位置 b是结尾 ,并不会影响原数组  (切割数组)
+
+如参数有负数则把两个参数加上数组长度再进行判断
+
+splice
+
+删除splice(0,2)删除数组索引从0开始的2个元素
+
+插入splice(2,0,"ab","cd")从数组索引2开始插入两个元素
+
+替换splice(2,1,"ab","cd")从数组索引2开始删除一个元素再添加两个元素
+
+splice(n,m,c) 
+
+n起始位置,m删除项数,c替换元素
+
+var arr =[1,2,34,5,2]
+
+arr.indexOf(2) ==>1  返回第一次出现的索引
