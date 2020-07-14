@@ -1,0 +1,18 @@
+数组迭代
+every（）数组元素给定函数（或者判断条件），数组元素都返回true则返回true
+filter（）数组元素给定函数（或者判断条件） ，将返回true的元素组成数组
+forEach（）数组元素给定函数，没有返回值
+map（）数组元素给定函数，返回每次函数调用的结果组成的数组
+some（）数组元素给定函数，数组元素对函数任意项返回true，则返回true
+some和every类似||和&&
+以上都不修改数组包含的值
+Date类型
+创建日期对象
+var time=new Date（）
+根据特定日期创建日期对象
+Date.parse()和 Date.UTC()
+var newTime=new Date（"May 20"）可以省略 Date.parse("May 20")
+var newTime=new Date（Date.UTC(2020,1(月份实际显示要加一)，30,15,45,55 )）
+参数分别是年月日时分秒
+var date =new Date（2020,1,2）
+console.log(valueOf(date))返回日期的毫秒数可以用来比较
