@@ -175,7 +175,7 @@ arr instanceof Array  arr是Array吗
 
 # 第五章
 
-## 5.1object类型
+### 5.1object类型
 
 创建实例
 
@@ -189,7 +189,7 @@ name:"joy"
 
 }
 
-## 5.2Array类型
+### 5.2Array类型
 
 var arr=Array(3)  长度为3   
 
@@ -242,3 +242,284 @@ n起始位置,m删除项数,c替换元素
 var arr =[1,2,34,5,2]
 
 arr.indexOf(2) ==>1  返回第一次出现的索引
+
+##### 数组迭代
+
+every（）数组元素给定函数（或者判断条件），数组元素都返回true则返回true
+filter（）数组元素给定函数（或者判断条件） ，将返回true的元素组成数组
+forEach（）数组元素给定函数，没有返回值
+map（）数组元素给定函数，返回每次函数调用的结果组成的数组
+some（）数组元素给定函数，数组元素对函数任意项返回true，则返回true
+some和every类似||和&&
+以上都不修改数组包含的值
+
+### 5.3Date类型
+
+创建日期对象
+var time=new Date（）
+根据特定日期创建日期对象
+Date.parse()和 Date.UTC()
+var newTime=new Date（"May 20"）可以省略 Date.parse("May 20")
+var newTime=new Date（Date.UTC(2020,1(月份实际显示要加一)，30,15,45,55 )）
+参数分别是年月日时分秒
+var date =new Date（2020,1,2）
+console.log(valueOf(date))返回日期的毫秒数可以用来比较
+
+### 5.4RegExp类型
+
+var reg=/pattern/flags    pattern可以是任何简单或复杂的正则表达式, flags表示匹配模式
+
+/g全局匹配
+
+/i不区分大小写
+
+/m多行匹配
+
+^ xx开头
+
+$ xx结尾
+
+[a-zA-Z] 包含字母不区分大小写
+
+[0-9]匹配数字  /\d/
+
+{n,m}至少匹配n次最多m次
+
+判断方法
+
+test()判断是否匹配
+
+exec()返回字符串
+
+match()找到检索指定的值
+
+### 函数类型
+
+函数可以作为参数传递
+
+fun call(fun1,param){
+
+return fun1(param)
+
+}
+
+fun1(param){
+
+return param+10
+
+}
+
+call(fun1,10)  =>20
+
+函数没有重载,只会覆盖前者
+
+### 函数内部属性
+
+arguments是一个类数组对象,包含函数内的所有参数
+
+this 指针全局函数指向windows
+
+局部函数调用时指向触发事件对象
+
+##### boolean类型
+
+创建boolean对象.调用boolean构造函数传入true或false
+
+var boo=new Boolean(true)
+
+##### number类型
+
+var num=new Number(1)
+
+num.toFixed(2) 保留两位小数
+
+##### string类型
+
+var str1=new String("hello")
+
+console.log(str.charAt(1)) 返回 "e"第二个字符
+
+var str2="world"  str1.concat(` ${str2}`)
+
+str1 =>"hello world"
+
+字符串方法
+
+- slice(*start*, *end*)提取字符串的某个部分并在新字符串中返回被提取的部分,接受负数时加上字符串长度再判断
+- substring(*start*, *end*)与slice类似但不接受负数
+- substr(*start*, *length*)
+- indexOf("h") 返回字符串是否包含"h",有则返回索引,没有返回"-1",接受第二个参数时从那个索引开始寻找
+- trim()删除前置后缀的空格
+- search()返回字符串的匹配项
+
+### 内置对象
+
+global对象
+
+许多方法时global对象的内置方法
+
+encodeURI()常规格式 <=>decodeURI()
+
+encodeURIComponent() 将部分变成%数字组合<=>decodeURIComponent()
+
+eval() 将参数解析并运行返回结果
+
+Math对象
+
+ceil向上取整
+
+floor向下取整
+
+round四舍五入
+
+random取随机数
+
+# 第六章
+
+##### 数据属性
+
+[configurable]表示能否操作.delete可以删除属性
+
+[enumerable]能被for-in遍历
+
+ [writeable]能否修改
+
+[value]表示对象的属性值.默认是undefined
+
+将一个对象设置不可修改
+
+var son={}
+
+Object.defineProperty(son,"name",{
+
+writable:false,
+
+value:"jack"
+
+})
+
+son.name="newName" 不生效
+
+##### 工厂模式
+
+创建一个轻松构建对象的函数
+
+function creator(name,sex,gender){
+
+var obj =new Object()
+
+obj.name=name
+
+obj.sex=sex
+
+obj.gender=gender
+
+obj.say=function(){
+
+alert(this.name)
+
+}
+
+return obj
+
+}
+
+实例化对象
+
+var obj1=creator("张三",20,"male") 无法区分是那个对象的实例,每调用这个构造函数都会创建一个新对象.
+
+##### 构造函数
+
+函数名首字母要大写
+
+function Person(name,sex,gender){
+
+this.name=name
+
+this.sex=sex
+
+this.gender=gender
+
+this.say=function(){
+
+alert(this.name)
+
+}
+
+}
+
+实例化
+
+var person1=new Person("李四",20,"male")
+
+区别:
+
+工厂模式内部创建了对象,需要定义一个原型函数(creator)
+
+构造函数实例化对象时,需要使用new 关键字,没有返回
+
+##### 原型链
+
+js对象都有proto属性指向构造该对象的构造函数原型()
+
+function才有prototype属性,这个属性指向这个函数的
+
+![](C:\Users\yzw\Desktop\20180909114030465.png)
+
+函数的prototype指向该函数的构造函数
+
+函数的_proto_指向 其构造函数的函数原型
+
+Object.prototype.construction===Object 等于本身
+
+##### 原型继承
+
+//  原型继承
+
+let a ={
+
+  x:10,
+
+  cal(z){
+
+​    return this.x+this.y+z
+
+  }
+
+}
+
+let b={
+
+  y:20,
+
+`__proto__:a //继承a的函数`
+
+}
+
+console.log(b.cal(10));
+
+##### 原型链的面向对象
+
+ function Foo(y) {
+
+   this.y=y
+
+ }
+
+ Foo.prototype.x=100
+
+ Foo.prototype.cal=function(z){
+
+   return this.x+this.y+z
+
+ }
+
+ //在构造函数Foo的函数原型上加属性和方法后，以后每次实例化的对象都自带这两个属性和方法
+
+ var b=new Foo(20)
+
+// 此时对象b已经有x 和cal函数了
+
+b.cal(10)
+
+// x=100 y=20 x=10
