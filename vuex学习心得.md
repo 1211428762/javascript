@@ -180,3 +180,6 @@ export default {
 import { MUTATIONS_TYPE } from "../store/mutations_type";
 
  ...mapMutations([MUTATIONS_TYPE.INCREASE]),
+
+如果要获取stroe文件下组件的值,在调用的组件内加上computed属性返回即可
+
