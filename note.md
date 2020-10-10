@@ -167,6 +167,10 @@ arr instanceof Array  arr是Array吗
 
 一对大括号是一个作用域
 
+symbol类型定义一个独一无二的标识符,可传入字符串作为参数用来对该对象进行描述
+
+let sym=Symbol("des"),可用来调试代码
+
 垃圾回收
 
 1.标记清除(常用)
