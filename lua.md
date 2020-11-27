@@ -54,6 +54,23 @@ end
 -- select(n,...)返回 第n个值和n以后的值
 --~=不等于
 -- 与 and,或or,非 not
+--#"hello" 返回字符串长度,5
+--..连接符,"h".."e等于he
+
+---lua模块定义
+--创建一个模块文件 module.lua
+module={}
+module.name="mod"
+function module.sum(a,b)
+   return a+b
+end
+--引用
+require "module"
+print(module.sum(1,1))  ==>2
+
+
+
+
 ```
 
 # lua-resty-template

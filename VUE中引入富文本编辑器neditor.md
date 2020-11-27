@@ -6,6 +6,8 @@
 
 文件放在 **public**下
 
+**文件名 NEditor**
+
 文件目录
 
 --dialogs
